@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campanha de Apoio à Professora Susana</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#fff4f8;
+  color:#543747;
+}
+
+header{
+  background:#e98bb4;
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+
+header h1{font-size:27px;margin-bottom:8px}
+header p{font-size:15px}
+
+.container{
+  max-width:750px;
+  margin:25px auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 4px 15px #dca9bd55;
+}
+
+h2{
+  color:#cf6393;
+  margin-bottom:15px;
+  text-align:center;
+}
+
+.photo{
+  width:100%;
+  max-height:400px;
+  object-fit:contain;
+  border-radius:14px;
+  background:#fff0f6;
+}
+
+.description{
+  line-height:1.7;
+  text-align:center;
+  margin-top:18px;
+}
+
+.info{
+  background:#fff0f6;
+  padding:18px;
+  border-radius:12px;
+  line-height:1.7;
+  text-align:center;
+}
+
+footer{
+  background:#e98bb4;
+  color:white;
+  text-align:center;
+  padding:22px;
+  font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Campanha de Apoio</h1>
+  <p>Juntos pela professora Susana ❤️</p>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Uma campanha de solidariedade</h2>
+
+    <p class="description">
+      Esta página foi criada para apresentar uma campanha
+      de apoio à professora Susana. Toda demonstração de
+      carinho, solidariedade e apoio é importante neste momento.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Cesta de produtos de beleza</h2>
+
+    <img
+      class="photo"
+      src="cesta.jpg"
+      alt="Cesta de produtos de beleza"
+    >
+
+    <p class="description">
+      Conheça a cesta de produtos preparada para a campanha.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Faça parte dessa corrente de apoio</h2>
+
+    <div class="info">
+      Sua solidariedade pode fazer a diferença.
+      Compartilhe esta campanha e ajude a divulgar a iniciativa.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Com carinho e solidariedade ❤️
+  <br>
+  Campanha de apoio à professora Susana
+</footer>
+
+</body>
+</html>
+
