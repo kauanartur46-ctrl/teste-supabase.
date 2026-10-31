@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste Supabase</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+body{font-family:Arial;background:#fff4f8;color:#49313e;padding:20px}
+h1{text-align:center}
+#grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.item{padding:15px 5px;text-align:center;border-radius:9px;background:#dff4e7}
+.reserved{background:#ddd}
+</style>
+</head>
+<body>
+<h1>Teste de sincronização</h1>
+<p id="status">Conectando...</p>
+<div id="grid"></div>
+
+<script>
+const SUPABASE_URL = "https://zntqdwsgbyzihmcpihvd.supabase.co";
+
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpudHFkd3NnYnl6aWhtY3BpaHZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzOTU5NjcsImV4cCI6MjEwODk3MTk2N30.z8E9MAtpKrKQPLvpes6UtGYbiGxWSDrAGzGblv3swlg";
+
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function carregar(){
+  const {data,error} = await client
+    .from('demo_numbers')
+    .select('number,status')
+    .order('number');
+
+  if(error){
+    document.getElementById('status').textContent = 'Erro: ' + error.message;
+    return;
+  }
+
+  document.getElementById('status').textContent =
+    'Conectado! ' + data.length + ' registros.';
+
+  document.getElementById('grid').innerHTML = data.map(item =>
+    `<div class="item ${item.status === 'reserved' ? 'reserved' : ''}">
+      ${String(item.number).padStart(3,'0')}<br>
+      ${item.status}
+    </div>`
+  ).join('');
+}
+
+client.channel('demo-changes')
+  .on('postgres_changes',{
+    event:'*',
+    schema:'public',
+    table:'demo_numbers'
+  },carregar)
+  .subscribe();
+
+carregar();
+</script>
+</body>
+</html>
